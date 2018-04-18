@@ -22,7 +22,7 @@ var demo = new autoComplete({
             if (~choices[i].toLowerCase().indexOf(term)) suggestions.push(choices[i]);
         suggest(suggestions);
     },
-    onSelect: function() {
-        
+    onSelect: function(e, term, item) {
+        console.log(term, item)
     }
 })

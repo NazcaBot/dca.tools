@@ -1,4 +1,4 @@
-var margin = {top: 20, right: 20, bottom: 30, left: 80},
+var margin = {top: 20, right: 20, bottom: 25, left: 80},
             width = 960 - margin.left - margin.right,
             height = 500 - margin.top - margin.bottom;
 
@@ -88,8 +88,14 @@ var updateChart = function(currData) {
     svg.selectAll("g.crosshair").call(crosshair);
 }
 
-axios.get("https://min-api.cryptocompare.com/data/histoday?fsym=BTC&tsym=USD&limit=150")
-.then(function(res) {
-    var data = res.data.Data
-    updateChart(data)
-})
+var fetchChartData = function(quote, base) {
+    quote = quote.toUpperCase()
+    base = base.toUpperCase()
+    axios.get("https://min-api.cryptocompare.com/data/histoday?fsym="+base+"&tsym="+quote+"&limit=150")
+    .then(function(res) {
+        var data = res.data.Data
+        updateChart(data)
+    })
+}
+
+fetchChartData('USD', 'BTC')
