@@ -22,10 +22,52 @@
     <link rel="stylesheet" type="text/css" href="static/css/main.css">
   </head>
 
-  <body class="Home">
+  <body>
+    <!-- Header -->
     <header>
-      <nav></nav>
+      <div class="container">
+        <strong>DCA Tools</strong>
+        <nav></nav>
+      </div>
     </header>
+
+    <section>
+      <div class="container">
+        <!-- DCA calculations -->
+        <div class="col-md-6" id="dca-inputs">
+          <div>
+            <div class="input-group">
+              <label for="price_paid">Average price paid</label>
+              <input name="price_paid" type="text" placeholder="0"/>
+            </div>
+            <div class="input-group">
+              <label for="num_coins">Number of coins</label>
+              <input name="num_coins" type="text" placeholder="0"/>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chart -->
+        <div class="col-md-6" id="chart"></div>
+      </div>
+    </section>
+
+    <!-- Past Calculations -->
+    <section>
+      <div class="container">
+        <div id="past-calculations"></div>
+      </div>
+    </section>
+
+    <!-- Marketing section -->
+    <section>
+      <div class="container">
+        <div><strong>What is DCA?</strong></div>
+        <div>Mauris in dictum enim, nec sagittis arcu. Fusce erat elit, sollicitudin eget posuere a, ornare vitae tellus. Aenean mollis ipsum et sodales commodo. Fusce ac quam nec nisi vulputate scelerisque at ut justo. Donec lorem ex, iaculis nec mauris id, mattis molestie elit. Ut velit tellus, pretium sit amet urna vitae, malesuada hendrerit velit. Praesent dolor arcu, posuere eget tincidunt ac, volutpat ut neque. In hac habitasse platea dictumst. Cras quis arcu imperdiet, suscipit arcu eu, volutpat tortor. Pellentesque pharetra lorem in nisl rutrum aliquam.</div>
+        <div><strong>What is DCA?</strong></div>
+        <div>Sed quam est, eleifend quis aliquam vel, rutrum ut ligula. Aliquam vitae nisl ac nunc aliquet varius. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce a lorem condimentum, congue elit ac, tempus erat. Cras a orci et purus faucibus pulvinar. Curabitur ipsum eros, pulvinar ac est at, tempor efficitur lacus.</div>
+      </div>
+    </section>
 
     <script src="static/js/main.js"></script>
   </body>
