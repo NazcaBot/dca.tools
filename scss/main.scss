@@ -1,20 +1,38 @@
 /* Imports */
-@import './bootstrap';
+@import './bootstrap',
+        './mixins';
 
 
 /* Layout */
-html {
-	margin: 0;
+* {
+    color: #484C63;
+    // font-family: 'Montserrat', sans-serif;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+}
+
+html, body {
+    background: #f5f6fa;
+    margin: 0;
 }
 
 header {
-	nav {
+    background: #FFFFFF;
+    border-bottom: 1px solid #E3E6EB;
+    margin-bottom: 100px;
+    padding: 20px;
 
-	}
+    .brand {
+        color: #FF5722;
+        font-weight: 600;
+        font-size: 16px;
+    }
 }
 
 section {
-
+    margin-bottom: 100px;
 }
 
 h1 {
@@ -24,7 +42,7 @@ h2 {
 
 }
 p {
-
+    line-height: 1.45;
 }
 a {
 
@@ -34,3 +52,20 @@ button {
 }
 
 /* Theme */
+.widget-wrapper {
+    background: #FFFFFF;
+    border: 1px solid #E3E6EB;
+    border-radius: 6px;
+    padding: 24px 26px;
+    
+    @include box-shadow(0 0 28px 0 rgba(77, 91, 166, 0.06));
+    @include transition(all 0.3s ease-in-out);
+}
+
+#intro {
+    p {
+        text-align: center;
+        line-height: 28px;
+        font-size: 17px;
+    }
+}
