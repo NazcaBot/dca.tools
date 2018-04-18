@@ -1,4 +1,3 @@
-// var markets = {}
 var coins = []
 
 // Get available markets
@@ -24,6 +23,6 @@ var demo = new autoComplete({
         suggest(suggestions);
     },
     onSelect: function() {
-
+        
     }
 })
