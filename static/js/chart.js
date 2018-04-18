@@ -96,6 +96,9 @@ var fetchChartData = function(quote, base) {
         var data = res.data.Data
         updateChart(data)
     })
+    .catch(function(err) {
+        console.log(err)
+    })
 }
 
 fetchChartData('USD', 'BTC')
