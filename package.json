@@ -16,9 +16,16 @@
     "url": "https://github.com/Evelyn-McDonald/dca.tools/issues"
   },
   "homepage": "https://github.com/Evelyn-McDonald/dca.tools#readme",
-  "dependencies": {
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.44",
+    "@babel/preset-env": "^7.0.0-beta.44",
     "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.1",
     "gulp-sass": "^4.0.1",
+    "gulp-sourcemaps": "^2.6.4",
     "run-sequence": "^2.2.1"
+  },
+  "dependencies": {
+    "techan": "^0.8.0"
   }
 }
