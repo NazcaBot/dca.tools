@@ -96,13 +96,16 @@ select {
     -moz-appearance: none;
     appearance: none;
 }
-select + .dropdown {
+select + .tip, input + .tip {
     position: absolute;
     top: 34px;
     right: 30px;
     i {
         color: #8388A5;
     }
+}
+input + .tip {
+    right: 20px;
 }
 
 label {
