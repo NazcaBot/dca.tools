@@ -1,0 +1,24 @@
+{
+  "name": "dca.tools",
+  "version": "1.0.0",
+  "description": "A tool for DCA, weighted average calculation and overall profit/loss calculation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Evelyn-McDonald/dca.tools.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Evelyn-McDonald/dca.tools/issues"
+  },
+  "homepage": "https://github.com/Evelyn-McDonald/dca.tools#readme",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sass": "^4.0.1",
+    "run-sequence": "^2.2.1"
+  }
+}
