@@ -6,7 +6,6 @@
 /* Layout */
 * {
     color: #484C63;
-    // font-family: 'Montserrat', sans-serif;
     font-family: 'Open Sans', sans-serif;
     font-size: 14px;
     font-weight: normal;
@@ -39,10 +38,20 @@ h1 {
 
 }
 h2 {
-
+    text-align: center;
+    line-height: 28px;
+    font-size: 17px;
+}
+h3 {
+    color: #FF5722;
+    font-size: 17px;
+    line-height: 26px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .025em;
 }
 p {
-    line-height: 1.45;
+    line-height: 1.5;
 }
 a {
 
@@ -51,21 +60,56 @@ button {
 
 }
 
+.input-group {
+    margin-bottom: 15px;
+    position: relative;
+}
+
+input, select {
+    background: #FFFFFF;
+    border: 1px solid #E3E6EB;
+    border-radius: 6px;
+    color: #484C63;
+    display: block;
+    font-size: 14px;
+    margin-top: 7px;
+    outline: none;
+    padding: 8px 15px;
+    width: 100%;
+
+    &.large {
+        padding: 20px 24px;
+    }
+}
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+select + .dropdown {
+    position: absolute;
+    top: 34px;
+    right: 30px;
+    i {
+        color: #8388A5;
+    }
+}
+
+label {
+    font-weight: 600;
+    font-size: 12px;
+}
+
+
 /* Theme */
 .widget-wrapper {
     background: #FFFFFF;
     border: 1px solid #E3E6EB;
     border-radius: 6px;
-    padding: 24px 26px;
+    margin-bottom: 10px;
+    overflow: auto;
+    padding: 24px;
     
     @include box-shadow(0 0 28px 0 rgba(77, 91, 166, 0.06));
     @include transition(all 0.3s ease-in-out);
-}
-
-#intro {
-    p {
-        text-align: center;
-        line-height: 28px;
-        font-size: 17px;
-    }
 }
