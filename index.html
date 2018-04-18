@@ -66,46 +66,45 @@
           <div class="widget-wrapper">
             <div class="col-md-6">
               <div class="input-group">
-                <label for="price_paid">I paid an average rate of</label>
-                <input name="price_paid" type="text" placeholder="0"/>
+                <label for="initial_rate_INPUT">I paid an average rate of</label>
+                <input name="initial_rate_INPUT" type="text" placeholder="0"/>
               </div>
               <div class="input-group">
-                <label for="num_coins">and bought this many coins</label>
-                <input name="num_coins" type="text" placeholder="0"/>
+                <label for="initial_num_coins_INPUT">and bought this many coins</label>
+                <input name="initial_num_coins_INPUT" type="text" placeholder="0"/>
               </div>
             </div>
             <div class="col-md-6 position-summary current">
               Current position
-              <span class="rate">at 0.04829845</span>
-              <span class="profit red">-10.47%</span>
-              <span class="initial">Initial value: $274.28</span>
-              <span class="current">Current value: $203.98</span>
-              <span class="current">Total holdings: 302.489</span>
+              <span class="rate" id="current_avgrate_CALC">at 0.04829845</span>
+              <span class="profit red" id="current_position_CALC">-10.47%</span>
+              <span class="initial" id="initial_value_CALC">Initial value: $274.28</span>
+              <span class="current" id="current_value_CALC">Current value: $203.98</span>
+              <span class="current" id="initial_balance_CALC">Total holdings: 302.489</span>
             </div>
           </div>
 
           <div class="widget-wrapper">
             <div class="col-md-6">
               <div class="input-group">
-                <label for="price_paid">If I buy</label>
-                <input name="price_paid" type="text" placeholder="0"/>
+                <label for="target_investment_INPUT">If I spend</label>
+                <input name="target_investment_INPUT" type="text" placeholder="0"/>
               </div>
               <div class="input-group">
-                <label for="price_paid">at</label>
-                <input name="price_paid" type="text" placeholder="0"/>
+                <label for="target_rate_INPUT">at the rate of</label>
+                <input name="target_rate_INPUT" type="text" placeholder="0"/>
               </div>
               <div class="input-group">
-                <label for="price_paid">my position will be</label>
-                <input name="price_paid" type="text" placeholder="0"/>
+                <label for="target_position_INPUT">my position will be</label>
+                <input name="target_position_INPUT" type="text" placeholder="0"/>
               </div>
             </div>
             <div class="col-md-6 position-summary target">
               Target position
-              <span class="rate">at 0.04829845</span>
-              <span class="profit red">-10.47%</span>
-              <span class="initial">Initial value: $274.28</span>
-              <span class="current">Current value: $203.98</span>
-              <span class="current">Total holdings: 702.489</span>
+              <span class="rate" id="target_avgrate_CALC">at 0.04829845</span>
+              <span class="profit red" id="target_position_CALC">-10.47%</span>
+              <span class="current" id="target_value_CALC">Target value: $203.98</span>
+              <span class="current" id="target_balance_CALC">Total holdings: 702.489</span>
             </div>
           </div>
         </div>

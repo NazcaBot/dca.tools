@@ -26,3 +26,28 @@ var demo = new autoComplete({
         console.log(term, item)
     }
 })
+
+
+/* Element selectors */
+
+// initial inputs
+var initial_rate_INPUT = document.getElementsByName("initial_rate_INPUT")[0]
+var initial_num_coins_INPUT = document.getElementsByName("initial_num_coins_INPUT")[0]
+
+// initial/current calculations
+var current_avgrate_CALC = document.getElementById('current_rate_CALC')
+var current_position_CALC = document.getElementById('current_position_CALC')
+var initial_value_CALC = document.getElementById('initial_value_CALC')
+var current_value_CALC = document.getElementById('current_value_CALC')
+var initial_balance_CALC = document.getElementById('initial_balance_CALC')
+
+// target inputs
+var target_position_INPUT = document.getElementsByName("target_position_INPUT")[0]
+var target_investment_INPUT = document.getElementsByName("target_investment_INPUT")[0]
+var target_rate_INPUT = document.getElementsByName("target_rate_INPUT")[0]
+
+// target calculations
+var target_avgrate_CALC = document.getElementById('target_avgrate_CALC')
+var target_position_CALC = document.getElementById('target_position_CALC')
+var target_value_CALC = document.getElementById('target_value_CALC')
+var target_balance_CALC = document.getElementById('target_balance_CALC')
