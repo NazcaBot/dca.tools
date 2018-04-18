@@ -35,11 +35,39 @@ var demo = new autoComplete({
         suggest(suggestions);
     },
     onSelect: function(e, term, item) {
-        var base = nameToSymbol[term].Symbol
-        var quote = "USD"
+        var coin = nameToSymbol[term]
+        var base = coin.Symbol
         var quote_select = document.getElementById("quote_currency");
         var quote = quote_select.options[quote_select.selectedIndex].value;
 
+        fetchCoinStats(coin, quote, base)
         fetchChartData(quote, base)
     }
 })
+
+var fetchCoinStats = function(coin, quote, base) {
+    quote = quote.toUpperCase()
+    base = base.toUpperCase()
+    axios.get("https://min-api.cryptocompare.com/data/pricemultifull?fsyms="+base+"&tsyms="+quote)
+    .then(function(res) {
+        var display = res.data.DISPLAY[base][quote]
+        var raw = res.data.RAW[base][quote]
+        /*
+            icon
+            name
+            24hr price % + price
+            24hr volume
+            marketcap
+
+        */
+        var data = {
+            icon: coin.ImageUrl,
+            price: { raw: raw.PRICE, display: display.PRICE },
+            price24hrChange: { raw: raw.CHANGEPCT24HOUR, display: display.CHANGEPCT24HOUR },
+            volume24hr: { raw: raw.VOLUME24HOURTO, display: display.VOLUME24HOURTO },
+            marketCap: { raw: raw.MKTCAP, display: display.MKTCAP }
+        }
+
+        console.log(data)
+    })
+}
