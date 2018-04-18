@@ -18,7 +18,6 @@ axios.get("https://min-api.cryptocompare.com/data/all/coinlist")
     })
 
     coinNames = coins.map(function(c) { return c.FullName })
-    console.log(coinNames)
 
 })
 .catch(function (err) {
@@ -38,6 +37,9 @@ var demo = new autoComplete({
     onSelect: function(e, term, item) {
         var base = nameToSymbol[term].Symbol
         var quote = "USD"
+        var quote_select = document.getElementById("quote_currency");
+        var quote = quote_select.options[quote_select.selectedIndex].value;
+
         fetchChartData(quote, base)
     }
 })
