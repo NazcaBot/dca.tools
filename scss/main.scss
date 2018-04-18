@@ -62,7 +62,7 @@ button {
 }
 
 .input-group {
-    margin-bottom: 15px;
+    margin-bottom: 13px;
     position: relative;
 }
 
@@ -70,10 +70,10 @@ input, select {
     background: #FFFFFF;
     border: 1px solid #E3E6EB;
     border-radius: 6px;
-    color: #484C63;
+    color: #FF5722;
     display: block;
     font-size: 14px;
-    margin-top: 7px;
+    margin-top: 5px;
     outline: none;
     padding: 8px 15px;
     width: 100%;
@@ -101,8 +101,35 @@ label {
     font-size: 12px;
 }
 
+table {
+    tr {
+        border-bottom: 1px solid #E3E6EB;
+
+        &:first-of-type, &:last-of-type {
+            border: none;
+        }
+    }
+    th {
+        color: #8388A5;
+        font-weight: 600;
+        text-align: left;
+        font-size: 11px;
+        padding: 0 0 20px;
+    }
+    td {
+        padding: 10px 0;
+    }
+}
+
 
 /* Theme */
+.red {
+    color: #f13456;
+}
+.green {
+    color: #6ACD4E;
+}
+
 .widget-wrapper {
     background: #FFFFFF;
     border: 1px solid #E3E6EB;
@@ -113,4 +140,35 @@ label {
     
     @include box-shadow(0 0 28px 0 rgba(77, 91, 166, 0.06));
     @include transition(all 0.3s ease-in-out);
+}
+
+.position-summary {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 600;
+
+    span {
+        display: block;
+    }
+
+    .rate {
+        text-transform: none;
+        font-size: 12px;
+        margin-bottom: 8px;
+    }
+    .profit {
+        font-size: 24px;
+        margin-bottom: 12px;
+    }
+    .initial, .current {
+        font-size: 12px;
+        margin-bottom: 3px;
+        text-transform: none;
+    }
+}
+
+#faq {
+    .faq-item {
+        margin-bottom: 50px;
+    }
 }

@@ -63,27 +63,46 @@
           <div class="widget-wrapper">
             <div class="col-md-6">
               <div class="input-group">
-                <label for="price_paid">Average price paid</label>
+                <label for="price_paid">I paid an average rate of</label>
                 <input name="price_paid" type="text" placeholder="0"/>
               </div>
               <div class="input-group">
-                <label for="num_coins">Number of coins</label>
+                <label for="num_coins">and bought this many coins</label>
                 <input name="num_coins" type="text" placeholder="0"/>
               </div>
             </div>
-            <div class="col-md-6">
-              Current position at 0.04829845 <br/>
-              -10.47% <br/>
+            <div class="col-md-6 position-summary current">
+              Current position
+              <span class="rate">at 0.04829845</span>
+              <span class="profit red">-10.47%</span>
+              <span class="initial">Initial value: $274.28</span>
+              <span class="current">Current value: $203.98</span>
+              <span class="current">Total holdings: 302.489</span>
             </div>
           </div>
 
           <div class="widget-wrapper">
             <div class="col-md-6">
-              If you buy <input name="price_paid" type="text" placeholder="0"/> at <input name="price_paid" type="text" placeholder="0"/> your position will be <input name="price_paid" type="text" placeholder="0"/>
+              <div class="input-group">
+                <label for="price_paid">If I buy</label>
+                <input name="price_paid" type="text" placeholder="0"/>
+              </div>
+              <div class="input-group">
+                <label for="price_paid">at</label>
+                <input name="price_paid" type="text" placeholder="0"/>
+              </div>
+              <div class="input-group">
+                <label for="price_paid">my position will be</label>
+                <input name="price_paid" type="text" placeholder="0"/>
+              </div>
             </div>
-            <div class="col-md-6">
-              Target position at 0.04829845 <br/>
-              -10.47% <br/>
+            <div class="col-md-6 position-summary target">
+              Target position
+              <span class="rate">at 0.04829845</span>
+              <span class="profit red">-10.47%</span>
+              <span class="initial">Initial value: $274.28</span>
+              <span class="current">Current value: $203.98</span>
+              <span class="current">Total holdings: 702.489</span>
             </div>
           </div>
         </div>
@@ -96,20 +115,47 @@
     <!-- Past Calculations -->
     <section>
       <div class="container-fluid">
+        <h2>Past calculations</h2>
         <div class="widget-wrapper" id="past-calculations">
-          Past calculations
-          <table></table>
+          <table width="100%">
+            <tr>
+              <th>Initial rate</th>
+              <th>Initial balance</th> 
+              <th>Target rate</th>
+              <th>Target position</th>
+            </tr>
+            <tr>
+              <td>0.4719173</td>
+              <td>914.38234</td>
+              <td>0.29475294</td>
+              <td><strong>-3.58%</strong></td>
+            </tr>
+            <tr>
+              <td>0.4719173</td>
+              <td>914.38234</td>
+              <td>0.29475294</td>
+              <td><strong>-3.58%</strong></td>
+            </tr>
+          </table>
         </div>
       </div>
     </section>
 
     <!-- Marketing section -->
-    <section>
+    <section id="faq">
       <div class="container">
-        <h3>What is DCA?</h3>
-        <p>Mauris in dictum enim, nec sagittis arcu. Fusce erat elit, sollicitudin eget posuere a, ornare vitae tellus. Aenean mollis ipsum et sodales commodo. Fusce ac quam nec nisi vulputate scelerisque at ut justo. Donec lorem ex, iaculis nec mauris id, mattis molestie elit. Ut velit tellus, pretium sit amet urna vitae, malesuada hendrerit velit. Praesent dolor arcu, posuere eget tincidunt ac, volutpat ut neque. In hac habitasse platea dictumst. Cras quis arcu imperdiet, suscipit arcu eu, volutpat tortor. Pellentesque pharetra lorem in nisl rutrum aliquam.</p>
-        <h3>What is DCA?</h3>
-        <p>Sed quam est, eleifend quis aliquam vel, rutrum ut ligula. Aliquam vitae nisl ac nunc aliquet varius. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce a lorem condimentum, congue elit ac, tempus erat. Cras a orci et purus faucibus pulvinar. Curabitur ipsum eros, pulvinar ac est at, tempor efficitur lacus.</p>
+        <div class="faq-item">
+          <h3>What is DCA?</h3>
+          <p>Mauris in dictum enim, nec sagittis arcu. Fusce erat elit, sollicitudin eget posuere a, ornare vitae tellus. Aenean mollis ipsum et sodales commodo. Fusce ac quam nec nisi vulputate scelerisque at ut justo. Donec lorem ex, iaculis nec mauris id, mattis molestie elit. Ut velit tellus, pretium sit amet urna vitae, malesuada hendrerit velit. Praesent dolor arcu, posuere eget tincidunt ac, volutpat ut neque. In hac habitasse platea dictumst. Cras quis arcu imperdiet, suscipit arcu eu, volutpat tortor. Pellentesque pharetra lorem in nisl rutrum aliquam.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Lorem ipsum?</h3>
+          <p>Sed quam est, eleifend quis aliquam vel, rutrum ut ligula. Aliquam vitae nisl ac nunc aliquet varius. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce a lorem condimentum, congue elit ac, tempus erat. Cras a orci et purus faucibus pulvinar. Curabitur ipsum eros, pulvinar ac est at, tempor efficitur lacus.</p>
+        </div>
+        <div class="faq-item">
+          <h3>How do I use this?</h3>
+          <p>Sed quam est, eleifend quis aliquam vel, rutrum ut ligula. Aliquam vitae nisl ac nunc aliquet varius. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce a lorem condimentum, congue elit ac, tempus erat. Cras a orci et purus faucibus pulvinar. Curabitur ipsum eros, pulvinar ac est at, tempor efficitur lacus. Mauris in dictum enim, nec sagittis arcu. Fusce erat elit, sollicitudin eget posuere a, ornare vitae tellus. Aenean mollis ipsum et sodales commodo. Fusce ac quam nec nisi vulputate scelerisque at ut justo.</p>
+        </div>
       </div>
     </section>
 
