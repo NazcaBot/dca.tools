@@ -1,1 +1,1 @@
-from 'techan' import techan
+const techan = require('techan')
