@@ -88,8 +88,14 @@ var updateChart = function(currData) {
     svg.selectAll("g.crosshair").call(crosshair);
 }
 
-axios.get("https://min-api.cryptocompare.com/data/histoday?fsym=BTC&tsym=USD&limit=150")
-.then(function(res) {
-    var data = res.data.Data
-    updateChart(data)
-})
+var fetchChartData = function(quote, base) {
+    quote = quote.toUpperCase()
+    base = base.toUpperCase()
+    axios.get("https://min-api.cryptocompare.com/data/histoday?fsym="+base+"&tsym="+quote+"&limit=150")
+    .then(function(res) {
+        var data = res.data.Data
+        updateChart(data)
+    })
+}
+
+fetchChartData('USD', 'BTC')
