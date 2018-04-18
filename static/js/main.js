@@ -1,4 +1,5 @@
 // var markets = {}
+var coins = []
 var coinNames = []
 var nameToSymbol = {}
 
@@ -7,9 +8,18 @@ axios.get("https://min-api.cryptocompare.com/data/all/coinlist")
 .then(function(res) {
     var res = res.data.Data
     for (m in res) {
-        coinNames.push(res[m].FullName)
+        res[m].SortOrder = parseInt(res[m].SortOrder)
+        coins.push(res[m])
         nameToSymbol[res[m].FullName] = res[m]
     }
+
+    coins.sort(function(a, b) {
+        return a.SortOrder - b.SortOrder;
+    })
+
+    coinNames = coins.map(function(c) { return c.FullName })
+    console.log(coinNames)
+
 })
 .catch(function (err) {
     console.log(err)
