@@ -1,17 +1,29 @@
-var markets = {}
-
-// Element selectors
-var marketSelect = document.getElementsByName('base_currency')[0]
+// var markets = {}
+var coins = []
 
 // Get available markets
 axios.get("https://min-api.cryptocompare.com/data/all/coinlist")
 .then(function(res) {
-    var markets = res.data.Data
+    var res = res.data.Data
 
-    for (m in markets) {
-        var option = document.createElement("option");
-        option.text = markets[m].FullName
-        option.value = markets[m].Symbol
-        marketSelect.appendChild(option)
+    for (m in res) {
+        coins.push(res[m].FullName)
+    }
+})
+
+
+var demo = new autoComplete({
+    selector: '#base_currency',
+    minChars: 1,
+    source: function(term, suggest){
+        term = term.toLowerCase();
+        var choices = coins
+        var suggestions = [];
+        for (i=0;i<choices.length;i++)
+            if (~choices[i].toLowerCase().indexOf(term)) suggestions.push(choices[i]);
+        suggest(suggestions);
+    },
+    onSelect: function() {
+
     }
 })

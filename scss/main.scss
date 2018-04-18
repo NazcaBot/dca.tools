@@ -1,7 +1,8 @@
 /* Imports */
 @import './bootstrap',
         './mixins',
-        './chart';
+        './chart',
+        './auto-complete';
 
 
 /* Layout */
@@ -21,7 +22,7 @@ html, body {
 header {
     background: #FFFFFF;
     border-bottom: 1px solid #E3E6EB;
-    margin-bottom: 100px;
+    margin-bottom: 80px;
     padding: 20px;
 
     .brand {
@@ -32,11 +33,11 @@ header {
 }
 
 section {
-    margin-bottom: 100px;
+    margin-bottom: 80px;
 }
 
 h1 {
-
+    text-align: center;
 }
 h2 {
     text-align: center;
