@@ -18,7 +18,6 @@
     <meta name="twitter:description" content="DCA Tools">
     <meta name="twitter:url" content="http://dca.tools">
 
-    <!-- <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"> -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="static/css/main.css">
@@ -33,64 +32,64 @@
     </header>
 
     <!-- Intro -->
-    <section id="intro">
+    <section>
       <div class="container">
         <div class="row">
           <div class="col-md-8 col-md-offset-2">
-            <p>Praesent dolor arcu, posuere eget tincidunt ac, volutpat ut neque. In hac habitasse platea dictumst. Cras quis arcu imperdiet, suscipit arcu eu, volutpat tortor. Pellentesque pharetra lorem in nisl rutrum aliquam.</p>
+            <h2>Praesent dolor arcu, posuere eget tincidunt ac, volutpat ut neque. In hac habitasse platea dictumst. Cras quis arcu imperdiet, suscipit arcu eu, volutpat tortor. Pellentesque pharetra lorem in nisl rutrum aliquam.</h2>
           </div>
         </div>
     </section>
 
     <section>
       <div class="container-fluid">
-        <div class="row">
-          <!-- DCA calculations -->
-          <div class="col-md-6" id="dca-inputs">
-            <div class="row widget-wrapper">
-              <div class="col-md-6">
-                <div class="input-group">
-                  <label for="price_paid">Quote</label>
-                  <input name="price_paid" type="text" placeholder="BTC"/>
-                </div>
-                <div class="input-group">
-                  <label for="num_coins">Base</label>
-                  <input name="num_coins" type="text" placeholder="ETH"/>
-                </div>
-              </div>
+        <!-- DCA calculations -->
+        <div class="col-md-5" id="dca-inputs">
+          <div class="widget-wrapper">
+            <div class="col-md-6 input-group">
+              <label for="quote_currency">Quote currency</label>
+              <select name="quote_currency">
+                <option value="usd">USD</option>
+                <option value="btc">BTC</option>
+              </select>
+              <span class="dropdown"><i class="fa fa-caret-down" aria-hidden="true"></i></span>
             </div>
-
-            <div class="row widget-wrapper">
-              <div class="col-md-6">
-                <div class="input-group">
-                  <label for="price_paid">Average price paid</label>
-                  <input name="price_paid" type="text" placeholder="0"/>
-                </div>
-                <div class="input-group">
-                  <label for="num_coins">Number of coins</label>
-                  <input name="num_coins" type="text" placeholder="0"/>
-                </div>
-              </div>
-              <div class="col-md-6">
-                Current position at 0.04829845 <br/>
-                -10.47% <br/>
-              </div>
-            </div>
-
-            <div class="row widget-wrapper">
-              <div class="col-md-6">
-                If you buy <input name="price_paid" type="text" placeholder="0"/> at <input name="price_paid" type="text" placeholder="0"/> your position will be <input name="price_paid" type="text" placeholder="0"/>
-              </div>
-              <div class="col-md-6">
-                Target position at 0.04829845 <br/>
-                -10.47% <br/>
-              </div>
+            <div class="col-md-6 input-group">
+              <label for="base_currency">Base currency</label>
+              <input name="base_currency" type="text" placeholder="ETH"/>
             </div>
           </div>
 
-          <!-- Chart -->
-          <div class="col-md-6 widget-wrapper" id="chart"></div>
+          <div class="widget-wrapper">
+            <div class="col-md-6">
+              <div class="input-group">
+                <label for="price_paid">Average price paid</label>
+                <input name="price_paid" type="text" placeholder="0"/>
+              </div>
+              <div class="input-group">
+                <label for="num_coins">Number of coins</label>
+                <input name="num_coins" type="text" placeholder="0"/>
+              </div>
+            </div>
+            <div class="col-md-6">
+              Current position at 0.04829845 <br/>
+              -10.47% <br/>
+            </div>
+          </div>
+
+          <div class="widget-wrapper">
+            <div class="col-md-6">
+              If you buy <input name="price_paid" type="text" placeholder="0"/> at <input name="price_paid" type="text" placeholder="0"/> your position will be <input name="price_paid" type="text" placeholder="0"/>
+            </div>
+            <div class="col-md-6">
+              Target position at 0.04829845 <br/>
+              -10.47% <br/>
+            </div>
+          </div>
         </div>
+
+        <!-- Chart -->
+        <div class="col-md-7 widget-wrapper" id="chart">CHART GOES HERE</div>
       </div>
     </section>
 
@@ -107,9 +106,9 @@
     <!-- Marketing section -->
     <section>
       <div class="container">
-        <div><strong>What is DCA?</strong></div>
+        <h3>What is DCA?</h3>
         <p>Mauris in dictum enim, nec sagittis arcu. Fusce erat elit, sollicitudin eget posuere a, ornare vitae tellus. Aenean mollis ipsum et sodales commodo. Fusce ac quam nec nisi vulputate scelerisque at ut justo. Donec lorem ex, iaculis nec mauris id, mattis molestie elit. Ut velit tellus, pretium sit amet urna vitae, malesuada hendrerit velit. Praesent dolor arcu, posuere eget tincidunt ac, volutpat ut neque. In hac habitasse platea dictumst. Cras quis arcu imperdiet, suscipit arcu eu, volutpat tortor. Pellentesque pharetra lorem in nisl rutrum aliquam.</p>
-        <div><strong>What is DCA?</strong></div>
+        <h3>What is DCA?</h3>
         <p>Sed quam est, eleifend quis aliquam vel, rutrum ut ligula. Aliquam vitae nisl ac nunc aliquet varius. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce a lorem condimentum, congue elit ac, tempus erat. Cras a orci et purus faucibus pulvinar. Curabitur ipsum eros, pulvinar ac est at, tempor efficitur lacus.</p>
       </div>
     </section>
