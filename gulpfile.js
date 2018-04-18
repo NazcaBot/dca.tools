@@ -1,7 +1,9 @@
 const gulp          = require('gulp')
 const runSequence   = require('run-sequence')
+const concat        = require('gulp-concat')
 const sass          = require('gulp-sass')
 const babel         = require('gulp-babel')
+const sourcemaps    = require('gulp-sourcemaps')
 
 var distFolder = './static/css';
 
@@ -28,7 +30,7 @@ gulp.task('build:js', function() {
 
 /* MAIN GULP TASKS */
 gulp.task('default', function(cb) {
-    runSequence('build:sass', cb)
+    runSequence(['build:sass', 'build:js'], cb)
 });
 
 gulp.task('watch', function(cb) {
