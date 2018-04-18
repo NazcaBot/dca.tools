@@ -35,7 +35,7 @@ var timeAnnotation = techan.plot.axisannotation()
         .axis(xAxis)
         .orient('bottom')
         .format(d3.timeFormat('%Y-%m-%d'))
-        .width(65)
+        .width(80)
         .translate([0, height]);
 
 var timeTopAnnotation = techan.plot.axisannotation()
@@ -61,9 +61,11 @@ function out() {
 }
 
 function move(coords) {
-    coordsText.text(
-        timeAnnotation.format()(coords.x) + ", " + ohlcAnnotation.format()(coords.y)
-    );
+    if (coords.x && coords.y) {
+        coordsText.text(
+            timeAnnotation.format()(coords.x) + ", " + ohlcAnnotation.format()(coords.y)
+        );
+    }
 }
 
 var svg = d3.select("body").append("svg")
@@ -105,7 +107,7 @@ svg.append("g")
 
 svg.append('g')
         .attr("class", "crosshair")
-        .datum({ x: x.domain()[80], y: 67.5 })
+        .datum({ x: x.domain()[80], y: y.domain()[5] })
         .call(crosshair)
         .each(function(d) { move(d); }); // Display the current data
 
@@ -114,7 +116,7 @@ svg.append('text')
         .attr("y", 15)
         .text("Select a coin!");
 
-var draw = function(currData) {
+var updateChart = function(currData) {
     currData = currData.map(function(d) {
         return {
             date: new Date(d.time * 1000),
@@ -138,5 +140,5 @@ var draw = function(currData) {
 axios.get("https://min-api.cryptocompare.com/data/histoday?fsym=BTC&tsym=USD&limit=200")
 .then(function(res) {
     var data = res.data.Data
-    draw(data)
+    updateChart(data)
 })
