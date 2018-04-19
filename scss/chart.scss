@@ -5,6 +5,24 @@
     }
 }
 
+#coin_rate_ch_DISPLAY {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.coin-stats {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.coin-stats-subtitle, .coin-stats {
+    display: block;
+    text-align: center;
+}
+.coin-stats-subtitle {
+    font-size: 12px;
+}
+
 .svg-container {
     display: inline-block;
     position: relative;

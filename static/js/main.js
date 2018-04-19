@@ -235,7 +235,9 @@ function updateTargetStats(type = 'rate') {
 function updateCoinStats() {
     coin_icon_DISPLAY.innerHTML = `<img src="https://www.cryptocompare.com${currentData.icon}" />`
     coin_rate_DISPLAY.innerHTML = currentData.price.display
-    coin_rate_ch_DISPLAY.innerHTML = currentData.price24hrChange.display
+    var pctChg = currentData.price24hrChange.raw
+    coin_rate_ch_DISPLAY.innerHTML = (pctChg >= 0 ? '&#x25B2;' : '&#x25BC;') + ' ' + pctChg.toFixed(2) + "%"
+    coin_rate_ch_DISPLAY.className = `coin-stats-subtitle ${pctChg >= 0 ? 'green' : 'red'}`
     coin_vol_DISPLAY.innerHTML = currentData.volume24hr.display
     coin_mkcap_DISPLAY.innerHTML = currentData.marketCap.display
 }
