@@ -2,7 +2,11 @@ var coins = []
 var coinNames = []
 var nameToSymbol = {}
 var quote = 'USD'
-var base = 'BTC'
+var base = 'ETH'
+
+// currency inputs
+var quote_currency_INPUT = document.getElementById("quote_currency_INPUT")
+var base_currency_INPUT = document.getElementById("base_currency_INPUT")
 
 // Get available markets
 axios.get("https://min-api.cryptocompare.com/data/all/coinlist")
@@ -26,7 +30,7 @@ axios.get("https://min-api.cryptocompare.com/data/all/coinlist")
 })
 
 var demo = new autoComplete({
-    selector: '#base_currency',
+    selector: '#base_currency_INPUT',
     minChars: 1,
     source: function(term, suggest){
         term = term.toLowerCase();
@@ -36,13 +40,7 @@ var demo = new autoComplete({
         suggest(suggestions);
     },
     onSelect: function(e, term, item) {
-        var coin = nameToSymbol[term]
-        base = coin.Symbol
-        var quote_select = document.getElementById("quote_currency");
-        quote = quote_select.options[quote_select.selectedIndex].value;
-
-        fetchCoinStats(coin, quote, base)
-        fetchChartData(quote, base)
+        onCoinSelected()
     }
 })
 
@@ -74,9 +72,22 @@ var fetchCoinStats = function(coin, quote, base) {
     })
 }
 
+var onCoinSelected = function() {
+    var baseName = base_currency_INPUT.value || 'ETH'
+    var baseCoin = nameToSymbol[baseName]
+    base = baseCoin.Symbol
+
+    var quoteSymbol = quote_currency_INPUT.options[quote_currency_INPUT.selectedIndex].value || 'USD'
+    quote = quoteSymbol
+
+    fetchCoinStats(baseCoin, quote, base)
+    fetchChartData(quote, base)
+}
+
+quote_currency_INPUT.addEventListener('change', onCoinSelected)
+
 
 /* Element selectors */
-
 // initial inputs
 var initial_rate_INPUT = document.getElementsByName("initial_rate_INPUT")[0]
 var initial_num_coins_INPUT = document.getElementsByName("initial_num_coins_INPUT")[0]
