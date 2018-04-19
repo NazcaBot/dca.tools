@@ -97,6 +97,7 @@ select {
     appearance: none;
 }
 select + .tip, input + .tip {
+    color: #8388A5;
     position: absolute;
     top: 34px;
     right: 30px;
@@ -105,7 +106,8 @@ select + .tip, input + .tip {
     }
 }
 input + .tip {
-    right: 20px;
+    right: 12px;
+    font-size: 12px;
 }
 
 label {
