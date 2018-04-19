@@ -137,26 +137,22 @@ var target_num_coins_DISPLAY = document.getElementById('target_num_coins_DISPLAY
 
 
 // Event listeners
-function update(func) {
-    return function() { 
-        func.apply(this, arguments)
-        updateInitialStats()
-        updateTargetStats()
-    }
-}
-
 function sanitize(input) {
     return parseFloat(input.trim().replace(/[^\d.-]/g, '')) || 0
 }
 
 // Initials
-var updateInitialRate = update(function(e) {
+var updateInitialRate = function(e) {
     initial_rate_CALC = sanitize(e.target.value)
-})
+    updateInitialStats()
+    updateTargetStats()
+}
 
-var updateInitialBalance = update(function(e) {
+var updateInitialBalance = function(e) {
     initial_num_coins_CALC = sanitize(e.target.value)
-})
+    updateInitialStats()
+    updateTargetStats()
+}
 
 function updateInitialStats() {
     initial_rate_DISPLAY.innerHTML = `at ${initial_rate_CALC}`
@@ -179,43 +175,52 @@ initial_num_coins_INPUT.addEventListener("keyup", updateInitialBalance)
 
 
 // Targets
-var updateTargetPosition = update(function(e) {
+var updateTargetPosition = function(e) {
     target_position_CALC = sanitize(e.target.value)
-})
+    updateInitialStats()
+    updateTargetStats('position')
+}
 
-var updateTargetRate = update(function(e) {
+var updateTargetRate = function(e) {
     target_rate_CALC = sanitize(e.target.value)
-})
+    updateInitialStats()
+    updateTargetStats()
+}
 
-var updateTargetInvestment = update(function(e) {
+var updateTargetInvestment = function(e) {
     target_value_CALC = sanitize(e.target.value)
-})
+    updateInitialStats()
+    updateTargetStats('investment')
+}
 
-function updateTargetStats() {
-    if (target_value_CALC) {
-        target_num_coins_CALC = initial_num_coins_CALC + target_value_CALC / target_rate_CALC 
-        target_avgrate_CALC = (initial_rate_CALC * initial_num_coins_CALC / target_num_coins_CALC) + (target_rate_CALC * (target_num_coins_CALC - initial_num_coins_CALC) / target_num_coins_CALC)
-        target_position_CALC = (target_rate_CALC - target_avgrate_CALC) / target_avgrate_CALC * 100
+function updateInvestment() {
+    target_num_coins_CALC = initial_num_coins_CALC + target_value_CALC / target_rate_CALC 
+    target_avgrate_CALC = (initial_rate_CALC * initial_num_coins_CALC / target_num_coins_CALC) + (target_rate_CALC * (target_num_coins_CALC - initial_num_coins_CALC) / target_num_coins_CALC)
+    target_position_CALC = (target_rate_CALC - target_avgrate_CALC) / target_avgrate_CALC * 100
+    
+    target_position_INPUT.value = target_position_CALC.toFixed(2)
+}
+function updatePosition() {
+    target_avgrate_CALC = target_rate_CALC - target_rate_CALC * target_position_CALC / 100
+    target_num_coins_CALC = initial_num_coins_CALC * (initial_rate_CALC - target_rate_CALC) / (target_avgrate_CALC - target_rate_CALC)
+    target_value_CALC = target_num_coins_CALC * target_avgrate_CALC - initial_value_CALC
+    
+    target_investment_INPUT.value = parseFloat((target_value_CALC).toFixed(8))
+}
+
+function updateTargetStats(type = 'rate') {
+    if (type == 'rate') {
+        if (target_value_CALC) updateInvestment()
+        else if (target_position_CALC) updatePosition()
     }
-    else if (target_position_CALC) {
-        target_avgrate_CALC = target_rate_CALC + target_rate_CALC * target_position_CALC / 100
-        target_num_coins_CALC = initial_num_coins_CALC * (initial_rate_CALC - target_rate_CALC) / (target_avgrate_CALC - target_rate_CALC)
-        target_value_CALC = target_num_coins_CALC * target_avgrate_CALC
-    }
-    // else {
-    //     target_value_CALC =
-    //     target_num_coins_CALC = 
-    //     target_position_CALC = 
-    // }
+    else if (type == 'investment') updateInvestment()
+    else updatePosition()
     
     target_avgrate_DISPLAY.innerHTML = `at ${target_avgrate_CALC.toFixed(8)}`
-    
-    target_position_INPUT.value = target_position_CALC
-    // target_investment_INPUT.value = target_value_CALC - initial_value_CALC
 
     // update displays
     target_position_DISPLAY.innerHTML = `${target_position_CALC.toFixed(2)}%`
-    target_value_DISPLAY.innerHTML = `Target investment: ${target_value_CALC + initial_value_CALC} ${quote.toUpperCase()}`
+    target_value_DISPLAY.innerHTML = `Target investment: ${parseFloat((target_value_CALC + initial_value_CALC).toFixed(8))} ${quote.toUpperCase()}`
     target_num_coins_DISPLAY.innerHTML = `Target holdings: ${parseFloat(target_num_coins_CALC.toFixed(8))} ${base.toUpperCase()}`
 }
 
