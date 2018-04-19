@@ -11,10 +11,9 @@ const router = new Router()
 
 router
 .get('/send/:email', async ctx => {
-    console.log(ctx.params.email)
     let contact = await ee.addContact(ctx.params.email)
     let email = await ee.sendEmail(ctx.params.email, 'Welcome to dca.tools!', '<h1>Welcome!</h1>')
-    console.log(contact.data, email.data)
+
     ctx.body = 'OK'
 })
 

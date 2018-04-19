@@ -9,32 +9,18 @@ class ElasticEmail {
     }
 
     addContact(email) {
-        console.log(querystring.stringify({
+        let qs = querystring.stringify({
             // apikey: this.apikey,
             publicAccountID: this.accountid,
 
             email: email,
             sendActivation: false
-        }))
-        return axios.get(`${this.base}/contact/add`, querystring.stringify({
-            // apikey: this.apikey,
-            publicAccountID: this.accountid,
-
-            email: email,
-            sendActivation: false
-        }))
+        })
+        return axios.get(`${this.base}/contact/add?${qs}`)
     }
 
     sendEmail(to, subject, body, isTransactional = true) {
-        console.log({
-            apikey: this.apikey,
-            from: "toolsdca@gmail.com",
-            fromName: "DCA.tools",
-            subject: subject,
-            to: to,
-            bodyHtml: body,
-            isTransactional: isTransactional
-        })
+
         return axios.post(`${this.base}/email/send`, querystring.stringify({
             apikey: this.apikey,
             from: "toolsdca@gmail.com",
