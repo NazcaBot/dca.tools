@@ -22,6 +22,10 @@
     "run-sequence": "^2.2.1"
   },
   "dependencies": {
-    "techan": "^0.8.0"
+    "axios": "^0.18.0",
+    "dotenv": "^5.0.1",
+    "koa": "^2.5.0",
+    "koa-router": "^7.4.0",
+    "querystring": "^0.2.0"
   }
 }
