@@ -10,6 +10,13 @@ var currentData = {}
 var quote_currency_INPUT = document.getElementById("quote_currency_INPUT")
 var base_currency_INPUT = document.getElementById("base_currency_INPUT")
 
+// above chart stats
+var coin_icon_DISPLAY = document.getElementById('coin_icon_DISPLAY')
+var coin_rate_DISPLAY = document.getElementById('coin_rate_DISPLAY')
+var coin_rate_ch_DISPLAY = document.getElementById('coin_rate_ch_DISPLAY')
+var coin_vol_DISPLAY = document.getElementById('coin_vol_DISPLAY')
+var coin_mkcap_DISPLAY = document.getElementById('coin_mkcap_DISPLAY')
+
 // Get available markets
 axios.get("https://min-api.cryptocompare.com/data/all/coinlist")
 .then(function(res) {
@@ -74,6 +81,7 @@ var fetchCoinStats = function(coin, quote, base) {
         target_rate_INPUT.value = target_rate_CALC
         updateInitialStats()
         updateTargetStats()
+        updateCoinStats()
 
         console.log(currentData)
     })
@@ -155,7 +163,7 @@ var updateInitialBalance = function(e) {
 }
 
 function updateInitialStats() {
-    initial_rate_DISPLAY.innerHTML = `at ${initial_rate_CALC}`
+    initial_rate_DISPLAY.innerHTML = `avg. price ${initial_rate_CALC} ${quote.toUpperCase()}`
     initial_num_coins_DISPLAY.innerHTML = `Total holdings: ${initial_num_coins_CALC} ${base.toUpperCase()}`
 
     initial_value_CALC = initial_rate_CALC * initial_num_coins_CALC
@@ -216,12 +224,20 @@ function updateTargetStats(type = 'rate') {
     else if (type == 'investment') updateInvestment()
     else updatePosition()
     
-    target_avgrate_DISPLAY.innerHTML = `at ${target_avgrate_CALC.toFixed(8)}`
+    target_avgrate_DISPLAY.innerHTML = `avg. price ${target_avgrate_CALC.toFixed(8)} ${quote.toUpperCase()}`
 
     // update displays
     target_position_DISPLAY.innerHTML = `${target_position_CALC.toFixed(2)}%`
     target_value_DISPLAY.innerHTML = `Target investment: ${parseFloat((target_value_CALC + initial_value_CALC).toFixed(8))} ${quote.toUpperCase()}`
     target_num_coins_DISPLAY.innerHTML = `Target holdings: ${parseFloat(target_num_coins_CALC.toFixed(8))} ${base.toUpperCase()}`
+}
+
+function updateCoinStats() {
+    coin_icon_DISPLAY.innerHTML = `<img src="https://www.cryptocompare.com${currentData.icon}" />`
+    coin_rate_DISPLAY.innerHTML = currentData.price.display
+    coin_rate_ch_DISPLAY.innerHTML = currentData.price24hrChange.display
+    coin_vol_DISPLAY.innerHTML = currentData.volume24hr.display
+    coin_mkcap_DISPLAY.innerHTML = currentData.marketCap.display
 }
 
 target_investment_INPUT.addEventListener("keyup", updateTargetInvestment)
