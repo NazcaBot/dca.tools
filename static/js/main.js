@@ -72,7 +72,8 @@ var fetchCoinStats = function(coin, quote, base) {
             marketCap: { raw: raw.MKTCAP, display: display.MKTCAP }
         }
 
-        target_rate_INPUT.value = currentData.price.raw
+        target_avgrate_CALC = currentData.price.raw
+        target_rate_INPUT.value = target_avgrate_CALC
         if (current_avgrate_CALC && initial_balance_CALC) updateInitialStats()
 
         console.log(currentData)
@@ -196,10 +197,20 @@ var updateTargetInvestment = debounce(function(e) {
     target_value_CALC = sanitize(e.target.value)
     target_value_DISPLAY.innerHTML = `Target value: ${target_value_CALC + initial_value_CALC} ${quote.toUpperCase()}`
     target_investment_INPUT.value = target_value_CALC
+
+    updateTargetStats()
 })
 
 function updateTargetStats() {
+    var newAvg = current_avgrate_CALC * (initial_value_CALC/(initial_value_CALC+target_value_CALC)) + target_avgrate_CALC * (target_value_CALC/(initial_value_CALC+target_value_CALC))
+    target_avgrate_DISPLAY.innerHTML = `at ${parseFloat(newAvg.toFixed(8))}`
 
+    target_position_CALC = (newAvg - current_avgrate_CALC) / current_avgrate_CALC
+    target_position_INPUT.value = target_position_CALC.toFixed(2)
+    target_position_DISPLAY.innerHTML = `${target_position_CALC.toFixed(2)}%`
+
+    target_balance_CALC = (initial_balance_CALC + target_value_CALC / target_avgrate_CALC).toFixed(8)
+    target_balance_DISPLAY.innerHTML = `Target holdings: ${target_balance_CALC} ${base.toUpperCase()}`
 }
 
 target_position_INPUT.addEventListener("keyup", updateTargetPosition)
