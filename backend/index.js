@@ -20,6 +20,10 @@ router
     ctx.body = 'OK'
 })
 
+router.get('/test'async ctx => {
+    ctx.body = 'tested!'
+})
+
 app
 .use(bodyParser())
 .use(router.routes())
