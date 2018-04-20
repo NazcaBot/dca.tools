@@ -14,13 +14,15 @@ const router = new Router()
 router
 .post('/send', async ctx => {
     let data = ctx.request.body.exportData
+    console.log(data)
+    if (data && data.length > 0)
+        let email = await ee.sendEmail(ctx.request.body.email, "Your dca.tools calculations:", emailMaker(data))
     // let contact = await ee.addContact(ctx.params.email)
-    let email = await ee.sendEmail(ctx.request.body.email, "Your dca.tools calculations:", emailMaker(data))
 
     ctx.body = 'OK'
 })
 
-router.get('/test'async ctx => {
+router.get('/test', async ctx => {
     ctx.body = 'tested!'
 })
 
