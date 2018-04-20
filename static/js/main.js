@@ -44,7 +44,7 @@ axios.get("https://min-api.cryptocompare.com/data/all/coinlist")
     console.log(err)
 })
 
-var demo = new autoComplete({
+var markets = new autoComplete({
     selector: '#base_currency_INPUT',
     minChars: 1,
     source: function(term, suggest){
@@ -135,9 +135,17 @@ document.getElementById('send-export').addEventListener('click', function(e) {
 
     if (re.test(String(email).toLowerCase())) {
         document.getElementById('invalid-email').style.display = 'none'
-        document.getElementById('step1').style.display = 'none'
-        document.getElementById('step2').style.display = 'block'
-    } else {
+
+        axios.post(`http://localhost:3000/send/${email}`, {
+            exportData: tableRows
+        })
+        .then(function(res) {
+            res = res.data
+            document.getElementById('step1').style.display = 'none'
+            document.getElementById('step2').style.display = 'block'
+        })
+    } 
+    else {
         document.getElementById('invalid-email').style.display = 'block'
     }
 })
