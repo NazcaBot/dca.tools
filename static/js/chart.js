@@ -18,13 +18,17 @@ var yAxis = d3.axisLeft(y);
 var ohlcAnnotation = techan.plot.axisannotation()
         .axis(yAxis)
         .orient('left')
-        .format(d3.format(',.2f'));
+        .format((n) => n > 100 ? d3.format('.2f')(n) : d3.format('.8f')(n))
+        .width(100)
+        .height(20)
+        .translate([10, 0]);
 
 var timeAnnotation = techan.plot.axisannotation()
         .axis(xAxis)
         .orient('bottom')
         .format(d3.timeFormat('%Y-%m-%d'))
         .width(100)
+        .height(20)
         .translate([0, height]);
 
 var crosshair = techan.plot.crosshair()

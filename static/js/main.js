@@ -172,6 +172,7 @@ function updateInitialStats() {
     if (currentData.price) {
         current_position_CALC = initial_rate_CALC ? (currentData.price.raw - initial_rate_CALC) / initial_rate_CALC * 100 : 0
         current_position_DISPLAY.innerHTML = `${current_position_CALC.toFixed(2)}%`
+        current_position_DISPLAY.className = `profit ${current_position_CALC >= 0 ? 'green' : 'red'}`
     
         current_value_CALC = currentData.price.raw * initial_num_coins_CALC
         current_value_DISPLAY.innerHTML = `Current value: ${parseFloat(current_value_CALC.toFixed(8))} ${quote.toUpperCase()}`
@@ -228,6 +229,7 @@ function updateTargetStats(type = 'rate') {
 
     // update displays
     target_position_DISPLAY.innerHTML = `${target_position_CALC.toFixed(2)}%`
+    target_position_DISPLAY.className = `profit ${target_position_CALC >= 0 ? 'green' : 'red'}`
     target_value_DISPLAY.innerHTML = `Target investment: ${parseFloat((target_value_CALC + initial_value_CALC).toFixed(8))} ${quote.toUpperCase()}`
     target_num_coins_DISPLAY.innerHTML = `Target holdings: ${parseFloat(target_num_coins_CALC.toFixed(8))} ${base.toUpperCase()}`
 }
