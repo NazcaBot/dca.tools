@@ -134,10 +134,11 @@ document.getElementById('send-export').addEventListener('click', function(e) {
     re.test(String(email).toLowerCase())
 
     if (re.test(String(email).toLowerCase())) {
-        console.log(email, 'send me export')
-        // closeModal()
+        document.getElementById('invalid-email').style.display = 'none'
+        document.getElementById('step1').style.display = 'none'
+        document.getElementById('step2').style.display = 'block'
     } else {
-        console.log(email, 'invalid email')
+        document.getElementById('invalid-email').style.display = 'block'
     }
 })
 

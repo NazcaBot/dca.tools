@@ -194,15 +194,21 @@
     <!-- Modal -->
     <div class="Modal" id="export-modal">
       <span class="Modal-bg close-export-modal"></span>
-      <div class="Modal-container">
+      <div class="Modal-container" id="step1">
         <span class="Modal-close close-export-modal"><i class="fa fa-times" aria-hidden="true"></i></span>
         <h2>Export your calculations</h2>
-        <p>Quisque venenatis nunc ut scelerisque placerat. Mauris sed turpis fringilla, posuere velit in, scelerisque ex. Duis at tempor urna, eget iaculis arcu. </p>
+        <p>Want save your calculations and crunch the numbers at a later date? Enter your email below and we'll send the data to your inbox.</p>
         <div class="input-group">
           <label for="export_email">Email</label>
           <input name="export_email" type="email" placeholder="satoshi@protonmail.com"/>
         </div>
+        <div id="invalid-email" class="red">Invalid email</div>
         <button id="send-export">Export my calculations</button>
+      </div>
+      <div class="Modal-container center" id="step2">
+        <span class="Modal-close close-export-modal"><i class="fa fa-times" aria-hidden="true"></i></span>
+        <h3>Success!</h3>
+        <p>Check your inbox for your DCA calculation export</p>
       </div>
     </div>
 
