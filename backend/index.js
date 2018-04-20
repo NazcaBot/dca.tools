@@ -14,7 +14,6 @@ const router = new Router()
 router
 .post('/send', async ctx => {
     let data = ctx.request.body.exportData
-    console.log(data)
     if (data && data.length > 0) {
         await ee.sendEmail(ctx.request.body.email, "Your dca.tools calculations:", emailMaker(data))
     }
