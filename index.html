@@ -108,7 +108,7 @@
               <span class="profit" id="target_position_DISPLAY">0.00%</span>
               <span class="current" id="target_value_DISPLAY">Target investment: 0 USD</span>
               <span class="current" id="target_num_coins_DISPLAY">Total holdings: 0 ETH</span>
-              <button><i>&#x25BC;</i> Add to table</button>
+              <button id="add_to_table"><i>&#x25BC;</i> Add to table</button>
             </div>
           </div>
         </div>
@@ -148,24 +148,14 @@
         <h4>Past calculations</h4>
         <button class="open-export-modal">Export calculations</button>
         <div class="widget-wrapper" id="past-calculations">
-          <table width="100%">
+          <table id="past_calculations_table" width="100%">
             <tr>
+              <th>Pair</th>
               <th>Initial rate</th>
               <th>Initial balance</th>
-              <th>Target rate</th>
+              <th>Rate to buy at</th>
+              <th>Amount to buy</th>
               <th>Target position</th>
-            </tr>
-            <tr>
-              <td>0.4719173</td>
-              <td>914.38234</td>
-              <td>0.29475294</td>
-              <td><strong>-3.58%</strong></td>
-            </tr>
-            <tr>
-              <td>0.4719173</td>
-              <td>914.38234</td>
-              <td>0.29475294</td>
-              <td><strong>-3.58%</strong></td>
             </tr>
           </table>
         </div>

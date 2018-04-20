@@ -6,6 +6,7 @@ var quote = 'USD'
 var base = 'ETH'
 var currentData = {}
 
+var tableRows = []
 
 var defaultCoin = 'Ethereum (ETH)'
 
@@ -178,6 +179,8 @@ var target_position_DISPLAY = document.getElementById('target_position_DISPLAY')
 var target_value_DISPLAY = document.getElementById('target_value_DISPLAY')
 var target_num_coins_DISPLAY = document.getElementById('target_num_coins_DISPLAY')
 
+var past_calculations_table = document.getElementById('past_calculations_table')
+
 
 // Event listeners
 function sanitize(input) {
@@ -279,6 +282,41 @@ function updateCoinStats() {
     coin_mkcap_DISPLAY.innerHTML = currentData.marketCap.display
 }
 
+function addToTable() {
+    var pair = quote.toUpperCase() + "-" + base.toUpperCase()
+    var initialRate = initial_rate_INPUT.value.length > 0 ? parseFloat(initial_rate_INPUT.value) : null
+    var initialBalance = initial_num_coins_INPUT.value.length > 0 ? parseFloat(initial_num_coins_INPUT.value) : null
+    var targetNumCoins = target_num_coins_CALC ? (target_num_coins_CALC - initialBalance) : null
+    var targetRate = target_rate_CALC || null
+    var targetPosition = target_position_CALC
+
+    tableRows.push([pair, initialRate, initialBalance, targetRate, targetNumCoins, targetPosition])
+
+    renderTable()
+}
+
+function renderTable() {
+    var tableHtml = "<tr><th>Pair</th><th>Initial rate</th><th>Initial balance</th><th>Rate to buy at</th><th>Amount to buy</th><th>Target position</th></tr>"
+    tableHtml += tableRows.reduce(function(res, row) {
+        if (row.every(function(r) { return r })) {
+            res += `
+                <tr>
+                  <td>${row[0]}</td>
+                  <td>${row[1].toFixed(8)}</td>
+                  <td>${row[2].toFixed(8)}</td>
+                  <td>${row[3].toFixed(8)}</td>
+                  <td>${row[4].toFixed(8)}</td>
+                  <td><strong>${row[5].toFixed(2)}%</strong></td>
+                </tr>
+            `
+            return res
+        } else return res
+    }, "")
+
+    past_calculations_table.innerHTML = tableHtml
+}
+
 target_investment_INPUT.addEventListener("keyup", updateTargetInvestment)
 target_rate_INPUT.addEventListener("keyup", updateTargetRate)
 target_position_INPUT.addEventListener("keyup", updateTargetPosition)
+document.getElementById("add_to_table").addEventListener("click", addToTable)
