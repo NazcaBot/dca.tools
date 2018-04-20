@@ -104,5 +104,3 @@ var fetchChartData = function(quote, base) {
         console.log(err)
     })
 }
-
-fetchChartData('USD', 'BTC')

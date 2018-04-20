@@ -79,6 +79,12 @@ button {
     outline: none;
     padding: 12px 20px;
     text-transform: uppercase;
+
+    i {
+        color: #fff;
+        font-size: 12px;
+        font-style: normal;
+    }
 }
 
 .input-group {
