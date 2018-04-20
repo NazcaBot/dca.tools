@@ -12,7 +12,7 @@ const app = new Koa()
 const router = new Router()
 
 router
-.post('/send', async ctx => {
+.post('/api/send', async ctx => {
     let data = ctx.request.body.exportData
     // let contact = await ee.addContact(ctx.params.email)
     let email = await ee.sendEmail(ctx.request.body.email, "Your dca.tools calculations:", emailMaker(data))
