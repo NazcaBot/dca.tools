@@ -127,6 +127,18 @@ document.querySelectorAll('.close-export-modal').forEach(function(e) {
 document.querySelectorAll('.open-export-modal').forEach(function(e) {
     e.addEventListener('click', openModal)
 })
+document.getElementById('send-export').addEventListener('click', function(e) {
+    var email = document.getElementsByName("export_email")[0].value
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    re.test(String(email).toLowerCase())
+
+    if (re.test(String(email).toLowerCase())) {
+        console.log(email, 'send me export')
+        // closeModal()
+    } else {
+        console.log(email, 'invalid email')
+    }
+})
 
 
 /* Element selectors */
