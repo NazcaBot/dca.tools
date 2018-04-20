@@ -31,11 +31,34 @@ header {
         font-weight: 600;
         font-size: 16px;
     }
+
+    nav {
+        float: right;
+        a {
+            color: #ff6333;
+            display: inline-block;
+            padding: 0 0 0 20px;
+            &:hover {
+                color: #ff6333;
+                text-decoration: none;
+            }
+        }
+    }
 }
 
 section {
     margin-bottom: 80px;
     position: relative;
+}
+
+footer {
+    text-align: center;
+    padding-bottom: 50px;
+    a { 
+        color: #484C63; 
+        font-weight: 600; 
+        font-size: 12px;
+    }
 }
 
 h1 {
@@ -198,8 +221,8 @@ table {
     }
 }
 
-#faq {
-    .faq-item {
+#about {
+    .about-item {
         margin-bottom: 50px;
     }
 }
