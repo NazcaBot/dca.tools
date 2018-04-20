@@ -23,7 +23,7 @@ class ElasticEmail {
 
         return axios.post(`${this.base}/email/send`, querystring.stringify({
             apikey: this.apikey,
-            from: "noreply@dca.tools",
+            from: "dcatools@gmail.com",
             fromName: "DCA.tools",
             subject: subject,
             to: to,
