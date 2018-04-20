@@ -340,3 +340,6 @@ target_rate_INPUT.addEventListener("keyup", updateTargetRate)
 target_fee_INPUT.addEventListener("keyup", updateTargetFee)
 target_position_INPUT.addEventListener("keyup", updateTargetPosition)
 document.getElementById("add_to_table").addEventListener("click", addToTable)
+base_currency_INPUT.addEventListener("click", function() {
+    base_currency_INPUT.value = ""
+})
