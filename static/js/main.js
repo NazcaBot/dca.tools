@@ -6,6 +6,9 @@ var quote = 'USD'
 var base = 'ETH'
 var currentData = {}
 
+
+var defaultCoin = 'Ethereum (ETH)'
+
 // currency inputs
 var quote_currency_INPUT = document.getElementById("quote_currency_INPUT")
 var base_currency_INPUT = document.getElementById("base_currency_INPUT")
@@ -33,6 +36,8 @@ axios.get("https://min-api.cryptocompare.com/data/all/coinlist")
 
     coinNames = coins.map(function(c) { return c.FullName })
 
+    onCoinSelected()
+    base_currency_INPUT.value = defaultCoin
 })
 .catch(function (err) {
     console.log(err)
@@ -88,13 +93,13 @@ var fetchCoinStats = function(coin, quote, base) {
 }
 
 var onCoinSelected = function() {
-    var baseName = base_currency_INPUT.value || 'ETH'
+    var baseName = base_currency_INPUT.value && base_currency_INPUT.value.length > 0 ? base_currency_INPUT.value : defaultCoin
     var baseCoin = nameToSymbol[baseName]
     base = baseCoin.Symbol
 
     var quoteSymbol = quote_currency_INPUT.options[quote_currency_INPUT.selectedIndex].value || 'USD'
     quote = quoteSymbol
-    
+
     document.querySelectorAll('.tip.quote').forEach(function(tip) {
         tip.innerHTML = quote.toUpperCase()
     })
@@ -247,4 +252,3 @@ function updateCoinStats() {
 target_investment_INPUT.addEventListener("keyup", updateTargetInvestment)
 target_rate_INPUT.addEventListener("keyup", updateTargetRate)
 target_position_INPUT.addEventListener("keyup", updateTargetPosition)
-
