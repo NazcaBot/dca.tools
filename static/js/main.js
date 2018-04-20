@@ -172,9 +172,10 @@ var current_value_DISPLAY = document.getElementById('current_value_DISPLAY')
 var initial_num_coins_DISPLAY = document.getElementById('initial_num_coins_DISPLAY')
 
 // target inputs
-var target_position_INPUT = document.getElementsByName("target_position_INPUT")[0]
 var target_investment_INPUT = document.getElementsByName("target_investment_INPUT")[0]
 var target_rate_INPUT = document.getElementsByName("target_rate_INPUT")[0]
+var target_fee_INPUT = document.getElementsByName("target_fee_INPUT")[0]
+var target_position_INPUT = document.getElementsByName("target_position_INPUT")[0]
 
 // target calculations
 var target_rate_CALC = 0
@@ -182,6 +183,7 @@ var target_avgrate_CALC = 0
 var target_position_CALC = 0
 var target_value_CALC = 0
 var target_num_coins_CALC = 0
+var target_fee_CALC = 0.001
 
 // target display
 var target_avgrate_DISPLAY = document.getElementById('target_avgrate_DISPLAY')
@@ -244,6 +246,13 @@ var updateTargetRate = function(e) {
     updateTargetStats()
 }
 
+var updateTargetFee = function(e) {
+    target_fee_CALC = sanitize(e.target.value) / 100
+    console.log(target_fee_CALC)
+    updateInitialStats()
+    updateTargetStats()
+}
+
 var updateTargetInvestment = function(e) {
     target_value_CALC = sanitize(e.target.value)
     updateInitialStats()
@@ -251,15 +260,15 @@ var updateTargetInvestment = function(e) {
 }
 
 function updateInvestment() {
-    target_num_coins_CALC = initial_num_coins_CALC + target_value_CALC / target_rate_CALC 
-    target_avgrate_CALC = (initial_rate_CALC * initial_num_coins_CALC / target_num_coins_CALC) + (target_rate_CALC * (target_num_coins_CALC - initial_num_coins_CALC) / target_num_coins_CALC)
-    target_position_CALC = (target_rate_CALC - target_avgrate_CALC) / target_avgrate_CALC * 100
+    target_num_coins_CALC = initial_num_coins_CALC + target_value_CALC / target_rate_CALC * (1 - target_fee_CALC)
+    target_avgrate_CALC = (initial_rate_CALC * initial_num_coins_CALC / target_num_coins_CALC) + (target_rate_CALC * (1 - target_fee_CALC) * (target_num_coins_CALC - initial_num_coins_CALC) / target_num_coins_CALC)
+    target_position_CALC = (target_rate_CALC * (1 - target_fee_CALC) - target_avgrate_CALC) / target_avgrate_CALC * 100
     
     target_position_INPUT.value = target_position_CALC.toFixed(2)
 }
 function updatePosition() {
-    target_avgrate_CALC = target_rate_CALC - target_rate_CALC * target_position_CALC / 100
-    target_num_coins_CALC = initial_num_coins_CALC * (initial_rate_CALC - target_rate_CALC) / (target_avgrate_CALC - target_rate_CALC)
+    target_avgrate_CALC = target_rate_CALC * (1 - target_fee_CALC) - target_rate_CALC * (1 - target_fee_CALC) * target_position_CALC / 100
+    target_num_coins_CALC = initial_num_coins_CALC * (initial_rate_CALC - target_rate_CALC * (1 - target_fee_CALC)) / (target_avgrate_CALC - target_rate_CALC)
     target_value_CALC = target_num_coins_CALC * target_avgrate_CALC - initial_value_CALC
     
     target_investment_INPUT.value = parseFloat((target_value_CALC).toFixed(8))
@@ -329,5 +338,6 @@ function renderTable() {
 
 target_investment_INPUT.addEventListener("keyup", updateTargetInvestment)
 target_rate_INPUT.addEventListener("keyup", updateTargetRate)
+target_fee_INPUT.addEventListener("keyup", updateTargetFee)
 target_position_INPUT.addEventListener("keyup", updateTargetPosition)
 document.getElementById("add_to_table").addEventListener("click", addToTable)
