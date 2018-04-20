@@ -1,8 +1,11 @@
 require('dotenv').config()
 const Koa = require('koa')
 const Router = require('koa-router')
+const cors = require('koa-cors')
+const bodyParser = require('koa-bodyparser')
 
 const ElasticEmail = require('./elasticemail')
+const emailMaker = require('./email')
 
 let ee = new ElasticEmail(process.env.API_KEY, process.env.ACCOUNT_ID)
 
@@ -10,13 +13,16 @@ const app = new Koa()
 const router = new Router()
 
 router
-.get('/send/:email', async ctx => {
-    let contact = await ee.addContact(ctx.params.email)
-    let email = await ee.sendEmail(ctx.params.email, 'Welcome to dca.tools!', '<h1>Welcome!</h1>')
+.post('/send', async ctx => {
+    let data = ctx.request.body.exportData
+    // let contact = await ee.addContact(ctx.params.email)
+    let email = await ee.sendEmail(ctx.request.body.email, "Your dca.tools calculations:", emailMaker(data))
 
     ctx.body = 'OK'
 })
 
-app.use(router.routes())
-
-app.listen(3300)
+app
+.use(bodyParser())
+.use(cors())
+.use(router.routes())
+.listen(3300)

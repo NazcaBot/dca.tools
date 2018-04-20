@@ -135,8 +135,9 @@ document.getElementById('send-export').addEventListener('click', function(e) {
 
     if (re.test(String(email).toLowerCase())) {
         document.getElementById('invalid-email').style.display = 'none'
-
-        axios.post(`http://localhost:3000/send/${email}`, {
+        tableRows = tableRows.filter(function(row) { return row.every(function(r) { return r }) })
+        axios.post("http://localhost:3300/send/", {
+            email: email,
             exportData: tableRows
         })
         .then(function(res) {
@@ -293,13 +294,14 @@ function updateCoinStats() {
 
 function addToTable() {
     var pair = quote.toUpperCase() + "-" + base.toUpperCase()
-    var initialRate = initial_rate_INPUT.value.length > 0 ? parseFloat(initial_rate_INPUT.value) : null
-    var initialBalance = initial_num_coins_INPUT.value.length > 0 ? parseFloat(initial_num_coins_INPUT.value) : null
-    var targetNumCoins = target_num_coins_CALC ? (target_num_coins_CALC - initialBalance) : null
-    var targetRate = target_rate_CALC || null
-    var targetPosition = target_position_CALC
+    var initialRate = initial_rate_INPUT.value.length > 0 ? parseFloat(initial_rate_INPUT.value).toFixed(8) + " " + quote.toUpperCase() : null
+    var initialBalance = initial_num_coins_INPUT.value.length > 0 ? parseFloat(initial_num_coins_INPUT.value).toFixed(8) + " " + base.toUpperCase() : null
+    var targetNumCoins = target_num_coins_CALC ? (target_num_coins_CALC - parseFloat(initialBalance)).toFixed(8) + " " + base.toUpperCase() : null
+    var targetRate = target_rate_CALC ? target_rate_CALC.toFixed(8) + " " + quote.toUpperCase() : null
+    var targetPosition = target_position_CALC ? target_position_CALC.toFixed(2) + "%" : null
+    var initialPosition = current_position_CALC ? current_position_CALC.toFixed(2) + "%" : null
 
-    tableRows.push([pair, initialRate, initialBalance, targetRate, targetNumCoins, targetPosition])
+    tableRows.push([pair, initialRate, initialBalance, targetRate, targetNumCoins, targetPosition, initialPosition])
 
     renderTable()
 }
@@ -311,11 +313,11 @@ function renderTable() {
             res += `
                 <tr>
                   <td>${row[0]}</td>
-                  <td>${row[1].toFixed(8)}</td>
-                  <td>${row[2].toFixed(8)}</td>
-                  <td>${row[3].toFixed(8)}</td>
-                  <td>${row[4].toFixed(8)}</td>
-                  <td><strong>${row[5].toFixed(2)}%</strong></td>
+                  <td>${row[1]}</td>
+                  <td>${row[2]}</td>
+                  <td>${row[3]}</td>
+                  <td>${row[4]}</td>
+                  <td><strong>${row[5]}%</strong></td>
                 </tr>
             `
             return res
