@@ -136,7 +136,7 @@ document.getElementById('send-export').addEventListener('click', function(e) {
     if (re.test(String(email).toLowerCase())) {
         document.getElementById('invalid-email').style.display = 'none'
         tableRows = tableRows.filter(function(row) { return row.every(function(r) { return r }) })
-        axios.post("/api/send/", {
+        axios.post("/api/send", {
             email: email,
             exportData: tableRows
         })
