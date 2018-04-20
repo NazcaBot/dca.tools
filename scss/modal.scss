@@ -1,0 +1,59 @@
+.Modal {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999999;
+    padding: 20px;
+    
+    .Modal-bg {
+        display: block;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(136, 135, 135, 0.6);
+        z-index: 0;
+    }
+
+    .Modal-container {
+        max-width: 600px;
+        height: 400px;
+        background: #ffffff;
+        margin: 0 auto;
+        border-radius: 6px;
+        position: relative;
+        top: 50%;
+        margin-top: -250px;
+        padding: 20px 30px;
+        
+        @include box-shadow(0 0 28px 0 rgba(77, 91, 166, 0.06));
+        @include transition(all 0.3s ease-in-out);
+        
+        .Modal-close {
+            cursor: pointer;
+            position: absolute;
+            top: -25px;
+            right: -25px;
+            i {
+                color: #ffffff;
+                font-size: 26px;
+
+            }
+        }
+    }
+
+    .input-group {
+        margin-top: 30px;
+    }
+    button {
+        margin-top: 50px;
+    }
+}

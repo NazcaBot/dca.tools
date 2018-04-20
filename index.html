@@ -143,9 +143,10 @@
     </section>
 
     <!-- Past Calculations -->
-    <section>
+    <section id="past_calculations">
       <div class="container-fluid">
         <h4>Past calculations</h4>
+        <button class="open-export-modal">Export calculations</button>
         <div class="widget-wrapper" id="past-calculations">
           <table id="past_calculations_table" width="100%">
             <tr>
@@ -189,6 +190,24 @@
     <footer>
       <a href="https://www.iubenda.com/privacy-policy/81897854" class="iubenda-white iubenda-embed" title="Privacy Policy">Privacy Policy</a>
     </footer>
+
+    <!-- Modal -->
+    <div class="Modal" id="export-modal">
+      <span class="Modal-bg close-export-modal"></span>
+      <div class="Modal-container">
+        <span class="Modal-close close-export-modal"><i class="fa fa-times" aria-hidden="true"></i></span>
+        <h2>Export your calculations</h2>
+        <p>Quisque venenatis nunc ut scelerisque placerat. Mauris sed turpis fringilla, posuere velit in, scelerisque ex. Duis at tempor urna, eget iaculis arcu. </p>
+        <div class="input-group">
+          <label for="email">Email</label>
+          <input name="email" type="email" placeholder="satoshi@protonmail.com"/>
+          <!-- <span class="tip quote">USD</span> -->
+        </div>
+        <button>Export my calculations</button>
+      </div>
+    </div>
+
+    <!-- Scripts -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"></script>
     <script type="text/javascript" src="static/js/libs/techan.min.js"></script>

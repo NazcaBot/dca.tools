@@ -112,6 +112,24 @@ var onCoinSelected = function() {
 quote_currency_INPUT.addEventListener('change', onCoinSelected)
 
 
+// Export modal stuff
+var modal = document.getElementById('export-modal')
+
+function closeModal() {
+    modal.style.display = "none"
+}
+function openModal() {
+    modal.style.display = "block"
+}
+
+document.querySelectorAll('.close-export-modal').forEach(function(e) {
+    e.addEventListener('click', closeModal)
+})
+document.querySelectorAll('.open-export-modal').forEach(function(e) {
+    e.addEventListener('click', openModal)
+})
+
+
 /* Element selectors */
 // initial inputs
 var initial_rate_INPUT = document.getElementsByName("initial_rate_INPUT")[0]
