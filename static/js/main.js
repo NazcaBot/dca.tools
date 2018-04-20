@@ -294,10 +294,10 @@ function updateCoinStats() {
 
 function addToTable() {
     var pair = quote.toUpperCase() + "-" + base.toUpperCase()
-    var initialRate = initial_rate_INPUT.value.length > 0 ? parseFloat(initial_rate_INPUT.value).toFixed(8) + " " + quote.toUpperCase() : null
-    var initialBalance = initial_num_coins_INPUT.value.length > 0 ? parseFloat(initial_num_coins_INPUT.value).toFixed(8) + " " + base.toUpperCase() : null
-    var targetNumCoins = target_num_coins_CALC ? (target_num_coins_CALC - parseFloat(initialBalance)).toFixed(8) + " " + base.toUpperCase() : null
-    var targetRate = target_rate_CALC ? target_rate_CALC.toFixed(8) + " " + quote.toUpperCase() : null
+    var initialRate = initial_rate_INPUT.value.length > 0 ? parseFloat(initial_rate_INPUT.value) + " " + quote.toUpperCase() : null
+    var initialBalance = initial_num_coins_INPUT.value.length > 0 ? parseFloat(initial_num_coins_INPUT.value) + " " + base.toUpperCase() : null
+    var targetNumCoins = target_num_coins_CALC ? (target_num_coins_CALC - parseFloat(initialBalance)) + " " + base.toUpperCase() : null
+    var targetRate = target_rate_CALC ? target_rate_CALC + " " + quote.toUpperCase() : null
     var targetPosition = target_position_CALC ? target_position_CALC.toFixed(2) + "%" : null
     var initialPosition = current_position_CALC ? current_position_CALC.toFixed(2) + "%" : null
 
