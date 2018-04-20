@@ -248,7 +248,6 @@ var updateTargetRate = function(e) {
 
 var updateTargetFee = function(e) {
     target_fee_CALC = sanitize(e.target.value) / 100
-    console.log(target_fee_CALC)
     updateInitialStats()
     updateTargetStats()
 }
